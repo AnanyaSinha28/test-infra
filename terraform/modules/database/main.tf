@@ -1,6 +1,6 @@
 resource "aws_db_subnet_group" "db_group" {
-  name       = "test-db-subnet-group"
-  subnet_ids = var.private_subnets
+  name       = "main-db-subnet-group"
+  subnet_ids = var.private_subnet_ids # Change from var.private_subnets
 }
 
 resource "aws_db_instance" "postgres" {

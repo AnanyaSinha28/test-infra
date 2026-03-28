@@ -22,3 +22,10 @@ output "nat_gateway_ip" {
   description = "The public IP of the NAT Gateway"
   value       = aws_eip.nat.public_ip
 }
+output "node_sg_id" {
+  description = "The security group ID for the ECS nodes"
+  value       = aws_security_group.ecs_nodes.id 
+}
+output "alb_sg_id" {
+  value = aws_security_group.alb_sg.id
+}

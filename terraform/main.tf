@@ -23,6 +23,7 @@ module "loadbalancer" {
   source            = "./modules/loadbalancer"
   vpc_id            = module.vpc.vpc_id
   public_subnet_ids = module.vpc.public_subnet_ids
+  alb_sg_id         = module.vpc.alb_sg_id 
 }
 
 # 5. EC2 Fleet (The Hosts)
@@ -54,6 +55,7 @@ module "frontend_service" {
   private_subnet_ids     = module.vpc.private_subnet_ids
   target_group_arn       = module.loadbalancer.frontend_tg_arn
   capacity_provider_name = module.cluster.capacity_provider_name
+  service_sg_id          = module.vpc.node_sg_id
 }
 
 # 8. Backend Service
@@ -67,4 +69,5 @@ module "backend_service" {
   private_subnet_ids     = module.vpc.private_subnet_ids
   target_group_arn       = module.loadbalancer.backend_tg_arn
   capacity_provider_name = module.cluster.capacity_provider_name
+  service_sg_id          = module.vpc.node_sg_id
 }

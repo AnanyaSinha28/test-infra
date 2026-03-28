@@ -49,3 +49,7 @@ variable "capacity_provider_name" {
   type        = string
   description = "The name of the capacity provider linked to the ASG"
 }
+variable "task_role_arn" {
+  type    = string
+  default = null # Optional if you don't have a specific task role yet
+}
