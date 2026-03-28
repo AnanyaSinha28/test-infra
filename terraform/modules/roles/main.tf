@@ -1,4 +1,3 @@
-### 1. Role for the EC2 Instances (The Hosts)
 resource "aws_iam_role" "ecs_instance_role" {
   name = "ecs-instance-role"
 
